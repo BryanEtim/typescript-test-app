@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography, TextField, Button } from '@mui/material'
 import Link from 'next/link'
 
 interface SignupData {
@@ -32,13 +32,14 @@ const SignupPage = () => {
   };
 
   return (
-    <form onSubmit={handleSignup}>
+    <form onSubmit={handleSignup} >
   
-       <Stack direction="column" alignItems="center" justifyContent="center" spacing={2}>
+       <Stack direction="column" alignItems="center" justifyContent="center" spacing={3} mt={15}>
       <div>
-        <h1>Sign-Up</h1>
-        <label htmlFor="email">Email:</label>
-        <input
+        <Typography variant="h4">Sign-Up</Typography>
+        <label htmlFor="email"></label>
+        <TextField
+        placeholder="Email"
           type="email"
           id="email"
           name="email"
@@ -47,8 +48,9 @@ const SignupPage = () => {
         />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
+        <label htmlFor="password"></label>
+        <TextField
+        placeholder="Password"
           type="password"
           id="password"
           name="password"
@@ -56,8 +58,8 @@ const SignupPage = () => {
           onChange={handleInputChange}
         />
       </div>
-      <button type="submit">Sign up</button>
-      <Typography>Already Signed Up <Link href="/login">Sign-In</Link></Typography>
+      <Button type="submit">Sign up</Button>
+      <Typography>Already Signed Up:  <Link href="/login" style={{textDecoration: 'none'}}>Sign-In</Link>!!!</Typography>
       </Stack>
     </form>
   );

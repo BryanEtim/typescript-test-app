@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Stack, Typography, TextField, Button } from '@mui/material'
+import Link from 'next/link'
 
 type User = {
   email: string;
@@ -28,17 +30,21 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Stack direction="column" alignItems="center" justifyContent="center" spacing={2} mt={15}>
       <div>
-        <h1>Login</h1>
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" value={user.email} onChange={handleChange} />
+      <Typography variant="h4">Login</Typography>
+        <label htmlFor="email"></label>
+        <TextField placeholder="Email" type="email" name="email" value={user.email} onChange={handleChange} />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" value={user.password} onChange={handleChange} />
+        <label htmlFor="password"></label>
+        <TextField placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange} />
       </div>
-      <button type="submit">Login</button>
+      <Button type="submit">Login</Button>
+      <Typography>Not Signed Up Yet:  <Link href="/" style={{textDecoration: 'none'}}>Sign-Up</Link>!!!</Typography>
       {error && <p>{error}</p>}
+      </Stack>
+
     </form>
   );
 };
